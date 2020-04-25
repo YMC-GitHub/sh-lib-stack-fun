@@ -5,50 +5,7 @@ THIS_FILE_PATH=$(
   pwd
 )
 source "$THIS_FILE_PATH/index.sh"
-
-function eq() {
-  if [ "$1" = "a" ]; then
-    echo "true"
-  else
-    echo "false"
-  fi
-}
-function test() {
-  local fn=
-  local expectValue=
-  local ouput=
-  fn=${1}
-  ouput=$(eval "$fn")
-  expectValue=${2}
-  echo "test:$fn"
-  if [ "$ouput" = "$expectValue" ]; then
-    echo "it is ok"
-  else
-    echo "it is false.expect $ouput = $expectValue"
-  fi
-}
-
-# arr_fill
-# arr_splice
-# arr_concat
-# arr_includes
-# arr_indexOf
-# arr_lastIndexOf
-# arr_join
-# arr_slice
-# arr_toString
-# arr_forEach
-# arr_map
-# arr_keys
-# arr_values
-# arr_entries
-# arr_every
-# arr_some
-# arr_filter
-# arr_find
-# arr_findIndex
-# arr_reduce
-# arr_reduceRight
+#source "$THIS_FILE_PATH/sh-lib-test.sh"
 
 #: <<simpe-usage
 echo "test-创建栈："
@@ -121,17 +78,20 @@ do
   #stack_push "app.vm.stack" "$i"
   binary=$[$RANDOM%2]
   echo "stack app.vm.stack push  $binary"
-  stack_push "app.vm.stack" "$binary"
+  stack_push "app.vm.stack" "$binary" > /dev/null 2>&1
 done
 
 stack_print "app.vm.stack" | sed "s/ //g"
 
 for i in `seq 1 32`
 do
-  echo "stack app.vm.stack pop"
-  stack_pop "app.vm.stack"
+  #echo "stack app.vm.stack pop"
+  #stack_pop "app.vm.stack"
+  a=$(stack_peek "app.vm.stack")
+  echo "stack app.vm.stack pop $a"
+  stack_pop "app.vm.stack" > /dev/null 2>&1
 done
-
+stack_print "app.vm.stack" | sed "s/ //g"
 
 ## file-usage
 # ./src/test.sh
