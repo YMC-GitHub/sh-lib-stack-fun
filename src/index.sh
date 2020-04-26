@@ -16,7 +16,7 @@ function stack(){
   [ -n "$1" ] && stack_name="$1"
   #support app.xx.xx,replace app.xx.xx to app_xx_xx
   stack_name=$(echo "$stack_name" | sed "s/\./_/g")
-  stack_value=" "
+  stack_value="null"
   [ -n "$2" ] && stack_value="$2"
 
 :<<YMC-NOTE
@@ -34,7 +34,7 @@ YMC-NOTE
 
   #out=$(arr_set "$stack_name" "$stack_value")
   #echo "$out"
-  arr_set "$stack_name" "$stack_value"
+  arr_set "$stack_name" "$stack_value" > /dev/null 2>&1
 }
 
 # 修改栈-添加元素
@@ -52,7 +52,7 @@ function stack_push(){
 
   #out=$(arr_push  "$stack_value" "$stack_name")
   #echo "$out"
-  arr_push  "$stack_value" "$stack_name"
+  arr_push  "$stack_value" "$stack_name" > /dev/null 2>&1
 }
 
 # 修改栈-删除元素
@@ -67,7 +67,7 @@ function stack_pop(){
   #echo "$stack_name"
   #out=$(arr_pop  "$stack_name")
   #echo "$out"
-  arr_pop  "$stack_name"
+  arr_pop  "$stack_name" > /dev/null 2>&1
 }
 # 读取栈-返回元素
 function stack_peek(){
@@ -120,7 +120,7 @@ function stack_clear(){
   stack_name=$(echo "$stack_name" | sed "s/\./_/g")
   #out=$(arr_set "$stack_name" " ")
   #echo "$out"
-  arr_set "$stack_name" " "
+  arr_set "$stack_name" " " > /dev/null 2>&1
 }
 # 读取栈-字符串化
 function stack_print(){
