@@ -78,7 +78,7 @@ do
   #stack_push "app.vm.stack" "$i"
   binary=$[$RANDOM%2]
   echo "stack app.vm.stack push  $binary"
-  stack_push "app.vm.stack" "$binary" > /dev/null 2>&1
+  stack_push "app.vm.stack" "$binary"
 done
 
 stack_print "app.vm.stack" | sed "s/ //g"
@@ -89,7 +89,7 @@ do
   #stack_pop "app.vm.stack"
   a=$(stack_peek "app.vm.stack")
   echo "stack app.vm.stack pop $a"
-  stack_pop "app.vm.stack" > /dev/null 2>&1
+  stack_pop "app.vm.stack"
 done
 stack_print "app.vm.stack" | sed "s/ //g"
 
