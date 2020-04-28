@@ -2,7 +2,7 @@
 
 ## desc
 
-starting
+based on v1.0.0
 
 ## deps
 
@@ -21,3 +21,7 @@ starting
 - [x] stack_size
 - [x] stack_clear
 - [x] stack_print
+
+## where it updates ?
+
+when update stack value without outputting caculation result
